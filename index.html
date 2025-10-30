@@ -29,9 +29,6 @@
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
 
-        // Check if we're on HTTPS or localhost (required for speech recognition on Android)
-        const isSecureContext = window.isSecureContext || window.location.protocol === 'https:' || window.location.hostname === 'localhost';
-
         const questions = [
             {
                 id: 1,
@@ -205,6 +202,9 @@
             const [speechSupported, setSpeechSupported] = useState(false);
             const [speechError, setSpeechError] = useState('');
             const textareaRef = useRef(null);
+
+            // Check if we're on HTTPS or localhost (required for speech recognition on Android)
+            const isSecureContext = window.isSecureContext || window.location.protocol === 'https:' || window.location.hostname === 'localhost';
 
             // Load saved progress from localStorage
             useEffect(() => {
